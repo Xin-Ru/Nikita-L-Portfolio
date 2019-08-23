@@ -1,0 +1,588 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap");
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol,
+ul {
+  list-style: none; }
+
+blockquote,
+q {
+  quotes: none; }
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+@font-face {
+  font-family: Futura;
+  src: url(../font/Futura_B.ttf); }
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family: 'Roboto', sans-serif;
+  overflow-y: hidden; }
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* FlexBox */
+.previewTodo, .previewTodoTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.currentTextBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start; }
+
+.playPreviewTodo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.playPreviewTodo a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+/*media queries*/
+.wrapper {
+  width: 100%; }
+
+.section {
+  width: 100%;
+  height: 100vh; }
+
+.section_lightBg {
+  background-color: #FFEDF7; }
+
+.control_container {
+  height: 100%;
+  float: left;
+  padding: 60px 100px; }
+
+.leftControl {
+  width: 63%; }
+
+.rightControl {
+  width: 37%;
+  background-color: #003164; }
+
+.leftControl_content {
+  position: relative;
+  height: 100%; }
+
+.input_container {
+  max-width: 600px;
+  width: 80%;
+  height: 20%; }
+
+.addField {
+  width: 90%;
+  height: 56px;
+  border: none;
+  background-color: #FFFFFF;
+  padding: 10px 15px;
+  font-size: 1vw;
+  font-style: italic;
+  color: #FF4384;
+  font-weight: 700;
+  float: left; }
+
+.addField:focus {
+  outline: none; }
+
+.addBtn {
+  width: 10%;
+  height: 56px;
+  border: none;
+  padding: 0;
+  background-color: #FFFFFF;
+  color: #FF4384; }
+  .addBtn:hover {
+    cursor: pointer; }
+
+::-webkit-input-placeholder {
+  color: #FF4384;
+  opacity: 1;
+  font-weight: 700;
+  font-size: 1vw;
+  font-style: italic;
+  /* Firefox */ }
+
+:-ms-input-placeholder {
+  color: #FF4384;
+  opacity: 1;
+  font-weight: 700;
+  font-size: 1vw;
+  font-style: italic;
+  /* Firefox */ }
+
+::-ms-input-placeholder {
+  color: #FF4384;
+  opacity: 1;
+  font-weight: 700;
+  font-size: 1vw;
+  font-style: italic;
+  /* Firefox */ }
+
+::placeholder {
+  color: #FF4384;
+  opacity: 1;
+  font-weight: 700;
+  font-size: 1vw;
+  font-style: italic;
+  /* Firefox */ }
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #FF4384;
+  font-size: 1vw;
+  font-weight: 700;
+  font-style: italic; }
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #FF4384;
+  font-weight: 700;
+  font-size: 1vw;
+  font-style: italic; }
+
+.timer_container {
+  width: 100%;
+  height: 55%;
+  padding-top: 5%;
+  position: relative; }
+
+.timer_conunterBox {
+  max-width: 600px;
+  width: 80%;
+  height: 100%; }
+
+.currentTodoBox {
+  width: 100%;
+  height: 48px; }
+
+.checkBox {
+  float: left;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* On mouse-over, add a blue background color */
+  /* When the radio button is checked, add a blue background */ }
+  .checkBox .radioCheck {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer; }
+  .checkBox .checkmark {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background-color: none;
+    border-radius: 50%;
+    border: 2px solid #003164;
+    -webkit-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    transition: 0.3s ease; }
+  .checkBox:hover .radioCheck ~ .checkmark {
+    background-color: #003164; }
+
+.checkedCheckMark {
+  background-color: #003164; }
+
+.currentCheckBox {
+  width: 48px;
+  height: 48px; }
+  .currentCheckBox .radioCheck {
+    width: 48px;
+    height: 48px; }
+  .currentCheckBox .checkmark {
+    width: 48px;
+    height: 48px; }
+
+.smallCheckBox {
+  width: 25px;
+  height: 25px; }
+  .smallCheckBox .radioCheck {
+    width: 25px;
+    height: 25px; }
+  .smallCheckBox .checkmark {
+    width: 25px;
+    height: 25px; }
+
+.currentTextBox {
+  width: calc(100% - 48px);
+  height: 48px;
+  padding-left: 15px;
+  -webkit-flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+  .currentTextBox label {
+    width: 100%;
+    height: 28px;
+    font-size: 1.45vw;
+    font-weight: 700;
+    color: #003164;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; }
+
+.progressTomatoBox {
+  width: 100%;
+  height: calc(100% - 28px); }
+  .progressTomatoBox ul {
+    width: 100%;
+    height: 100%;
+    padding-top: 5px; }
+    .progressTomatoBox ul li {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid #FF4384;
+      float: left;
+      margin-right: 6px; }
+
+.counter {
+  width: 100%;
+  margin-top: 20px;
+  font-size: 10vw;
+  font-weight: 700;
+  color: #FF4384; }
+
+.timer_circleBox {
+  position: absolute;
+  min-width: 40vw;
+  height: 40vw;
+  top: calc(50% - 20vw);
+  left: calc(100% - 20vw + 100px); }
+
+.clock {
+  width: 100%;
+  height: 100%;
+  position: relative; }
+
+.playTimerBtn {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease; }
+  .playTimerBtn img {
+    width: 100%; }
+
+.playTimerBtnHide {
+  display: none; }
+
+.stopTimerBtn {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease; }
+  .stopTimerBtn img {
+    width: 100%; }
+
+.stopTimerBtnHide {
+  display: none; }
+
+.endTimerBtn {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: calc(50% + 40px);
+  left: calc(50% + 55px);
+  background-color: #fff;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease; }
+  .endTimerBtn:hover {
+    -webkit-transform: scale(1.5, 1.5);
+    -ms-transform: scale(1.5, 1.5);
+    transform: scale(1.5, 1.5); }
+
+.endTimerBtnRed {
+  background-color: #FF4384; }
+
+.progress {
+  width: 100%;
+  height: 100%;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg); }
+
+.progressValue {
+  stroke-dasharray: 339.292;
+  stroke-dashoffset: 0; }
+
+.leftbackCircle {
+  stroke-dasharray: 339.292;
+  stroke-dashoffset: 0;
+  stroke: #FFEDF7; }
+
+.rightbackCircle {
+  stroke-dasharray: 339.292;
+  stroke-dashoffset: 169.646;
+  stroke: #003164; }
+
+.defaultCircle,
+.progressValue {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease; }
+
+.previewTodos_container {
+  max-width: 600px;
+  width: 80%;
+  height: calc(25% - 25px); }
+  .previewTodos_container ul {
+    width: 100%;
+    height: 100%; }
+
+.noDataLabel {
+  color: #FF4384;
+  opacity: 0.5;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  font-size: 1.5rem; }
+
+.previewTodo {
+  width: 100%;
+  height: calc(100% / 3);
+  border-bottom: 2px solid #e6e6e6; }
+
+.previewTodoTitle {
+  width: calc(90% - 25px);
+  color: #003164;
+  font-weight: bold;
+  height: 100%;
+  padding-left: 15px;
+  font-size: 1.3rem; }
+
+.todoCompletedLine {
+  text-decoration: line-through; }
+
+.playPreviewTodo {
+  width: 15%;
+  height: 100%; }
+  .playPreviewTodo a {
+    width: 100%;
+    height: 100%; }
+    .playPreviewTodo a img {
+      width: 35px;
+      height: 35px; }
+
+.seeAllTodos {
+  border: none;
+  color: #FF4384;
+  background-color: rgba(255, 255, 255, 0);
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  height: 25px;
+  padding-top: 10px;
+  float: right;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease; }
+  .seeAllTodos:hover {
+    opacity: 0.3;
+    cursor: pointer; }
+
+.menuicon_container {
+  width: 40px;
+  height: 100%;
+  float: right;
+  position: relative; }
+  .menuicon_container ul {
+    width: 100%;
+    height: 100%; }
+    .menuicon_container ul li {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 40px; }
+      .menuicon_container ul li a {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: 0.3s ease;
+        trnasition: 0.3s ease; }
+        .menuicon_container ul li a:hover {
+          opacity: 0.6; }
+        .menuicon_container ul li a img {
+          width: 100%; }
+
+.webLabel {
+  font-family: 'Futura';
+  color: white;
+  font-size: 2rem;
+  letter-spacing: 4px;
+  position: absolute;
+  right: -67px;
+  bottom: 67px;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg); }

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="viewport" content="viewport-fit=cover">
+    <meta name="title" content="POMODORO | NIKITA PLANET">
+    <meta name="description" content="Hello traveler, welcome to visit my planet !">
+    <meta name="keywords" content="Front-end Developer,Front-end,Developer,coding,website,website developer,前端工程師,前端開發,Nikita's
+        Planet,POMODORO">
+    <meta name="copyright" content=">NIKITA PLANET | FRONT-END DEVELOPER">
+    <meta property="og:title" content="POMODORO | NIKITA PLANET">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nikitaplanet.me/">
+    <!-- <meta property="og:image" content="https://www.photounc.com/img/header.jpg"> -->
+    <meta property="og:description" content="Hello traveler, welcome to visit my planet !">
+    <meta property="og:site_name" content=">POMODORO | NIKITA PLANET">
+    <link rel="shortcut icon" href="../../../img/favi.ico">
+    <title>POMODORO | NIKITA PLANET</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144242740-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-144242740-1');
+    </script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.css">
+    <!-- Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+
+<body>
+    <div class="wrapper" id="app">
+        <div class="section section_lightBg">
+            <div class="control_container leftControl">
+                <div class="leftControl_content">
+                    <div class="input_container">
+                        <input class="addField" type="text" placeholder="ADD A NEW MISSION..." @keyup.enter="addTodo"
+                            v-model="newTodo">
+                        <button type="button" class="addBtn" @click="addTodo"><i class="material-icons">
+                                add
+                            </i>
+                        </button>
+                    </div>
+                    <div class="timer_container">
+                        <div class="timer_conunterBox">
+                            <div class="currentTodoBox">
+                                <div class="checkBox currentCheckBox">
+                                    <input type="radio" name="radio" class="radioCheck">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <div class="currentTextBox">
+                                    <label for="">THE FIRST THING TO DO TODAY</label>
+                                    <div class="progressTomatoBox">
+                                        <ul>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="counter">{{clock}}</div>
+                        </div>
+                        <div class="timer_circleBox">
+                            <div class="clock">
+                                <svg class="progress" width="120" height="120" viewBox="0 0 120 120">
+                                    <circle class="defaultCircle" cx="60" cy="60" r="54" stroke-width="8" />
+                                    <circle class="leftbackCircle" cx="60" cy="60" r="54" fill="none"
+                                        stroke-width="6" />
+                                    <circle class="rightbackCircle" cx="60" cy="60" r="54" fill="none"
+                                        stroke-width="6" />
+                                    <circle class="progressValue" cx="60" cy="60" r="54" stroke-width="6" />
+                                </svg>
+                                <a href="#" class="playTimerBtn" :class="{'playTimerBtnHide':timerStart}"
+                                    @click="setTime"><img src="img/playWhiteIcon.svg" alt="palyCounter"></a>
+                                <a href="#" class="stopTimerBtn" :class="{'stopTimerBtnHide':!timerStart}"
+                                    @click="stopTime"><img src="img/stopIcon.svg" alt="stopCounter"></a>
+                                <a href="#" class="endTimerBtn" :class="{'endTimerBtnRed':timerStart}"
+                                    @click="clearTimer"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="previewTodos_container">
+                        <ul>
+                            <div class="noDataLabel" v-if="noData">Create some missions...</div>
+                            <li class="previewTodo" v-for="(item,key) in todos" v-if="key <= 2">
+                                <div class="checkBox smallCheckBox">
+                                    <input type="checkbox" name="radio" class="radioCheck" v-model="item.completed"
+                                        :id="item.id">
+                                    <span class="checkmark" :class="{'checkedCheckMark':item.completed}"></span>
+                                </div>
+                                <div class="previewTodoTitle" :class="{'todoCompletedLine':item.completed}">
+                                    {{key+1}} - {{item.title}}</div>
+                                <div class="playPreviewTodo"><a href="#"><img src="img/play.svg" alt="play icon"></a>
+                                </div>
+                            </li>
+                        </ul>
+                        <button class="seeAllTodos" v-if="moreData">{{moreNum}} MORE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="control_container rightControl">
+                <div class="menuicon_container">
+                    <ul>
+                        <li><a href="#"><img src="img/list.svg" alt="list"></a></li>
+                        <li><a href="#"><img src="img/analytics.svg" alt="analytics"></a></li>
+                        <li><a href="#"><img src="img/music.svg" alt="music"></a></li>
+                    </ul>
+                    <div class="webLabel">POMODORO</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/all.js"></script>
+</body>
+
+</html>

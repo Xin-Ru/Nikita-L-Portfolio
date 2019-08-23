@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To Do</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/all.css">
+</head>
+
+<body>
+    <div class="wrapper" id="app">
+        <div class="box">
+            <div class="title">待辦事項</div>
+            <div class="typeBox">
+                <input type="text" placeholder="輸入待辦事項..." @keyup.enter="addTodo" v-model="newTodo">
+                <button type="button" @click="addTodo">新增</button>
+            </div>
+            <div class="switchBox">
+                <button type="button" :class="{'active':visibility == 'all'}" @click="visibility = 'all'">全部</button>
+                <button type="button" :class="{'active':visibility == 'active'}"
+                    @click="visibility = 'active'">進行中</button>
+                <button type="button" :class="{'active':visibility == 'completed'}"
+                    @click="visibility = 'completed'">已完成</button>
+            </div>
+            <div class="listBox">
+                <ul>
+                    <li v-for="(item,key) in filteredTodos" @dblclick="editTodo(item)">
+                        <div v-if="item.id !== cacheTodo.id">
+                            {{key + 1 }}.
+                            <input type="checkbox" class="checkButton" v-model="item.completed" :id="item.id">
+                            <label class="listField" :class="{'completed':item.completed}" :for="item.id">
+                                {{item.title}}
+                            </label>
+                            <button type="button" class="deleteButton" @click="removeTodo(item)">&times;</button>
+                        </div>
+                        <input type="text" class="editField" @keyup.enter="doneEdit(item)" @keyup.esc="cancelEdit()"
+                            v-model="cacheTitle" v-if="item.id === cacheTodo.id">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="outerBox">
+            <div class="allData">還有{{ countTodos }}未完成</div>
+            <button type="button" @click="removeAllTodo">清除所有事項</button>
+        </div>
+    </div>
+</body>
+<script src="js/all.js"></script>
+
+</html>

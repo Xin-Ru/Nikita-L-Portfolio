@@ -1,0 +1,278 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol,
+ul {
+  list-style: none; }
+
+blockquote,
+q {
+  quotes: none; }
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body,
+html {
+  min-height: 100%; }
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  background-color: #32a685;
+  position: relative; }
+
+.box {
+  width: 700px;
+  height: 500px;
+  background-color: #d9bb62;
+  border-radius: 10px;
+  position: absolute;
+  top: calc(50% - 250px);
+  left: calc(50% - 350px);
+  padding: 20px 30px; }
+
+.outerBox {
+  width: 700px;
+  height: 40px;
+  position: absolute;
+  top: calc(50% + 250px + 15px);
+  left: calc(50% - 350px); }
+  .outerBox button {
+    border: none;
+    float: right;
+    background-color: #F5534F;
+    padding: 5px 10px;
+    color: white;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    font-weight: bold; }
+    .outerBox button:hover {
+      cursor: pointer; }
+
+.allData {
+  text-align: left;
+  float: left;
+  color: white;
+  letter-spacing: 2px;
+  padding-left: 10px;
+  font-weight: bold; }
+
+.title {
+  width: 100%;
+  text-align: center;
+  font-size: 200%;
+  margin: 20px 0;
+  font-weight: bold;
+  letter-spacing: 2px; }
+
+.typeBox {
+  width: 100%;
+  height: 40px;
+  display: -webkit-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+  .typeBox input {
+    width: 88%;
+    height: 100%;
+    border: none;
+    font-size: 18px;
+    padding-left: 15px; }
+  .typeBox button {
+    width: 12%;
+    height: 100%;
+    border: none;
+    font-weight: bold;
+    color: black;
+    background-color: #f2e966; }
+
+.switchBox {
+  width: 100%;
+  height: 40px;
+  margin-top: 30px; }
+  .switchBox button {
+    width: 80px;
+    border: none;
+    height: 30px;
+    margin-right: 10px;
+    background-color: #f2e966;
+    font-weight: bold;
+    opacity: 0.5; }
+    .switchBox button:hover {
+      cursor: pointer; }
+  .switchBox .active {
+    opacity: 1;
+    background-color: #f28749;
+    outline: none;
+    border: none; }
+
+.listBox {
+  width: 100%;
+  height: 250px;
+  overflow: auto;
+  background-color: #fff;
+  padding: 20px; }
+  .listBox ul {
+    width: 100%; }
+    .listBox ul li {
+      width: 100%;
+      margin-bottom: 10px; }
+
+.editField {
+  margin-top: 5px;
+  width: 100%;
+  height: 30px;
+  padding: 15px;
+  border: 1px solid lightgray; }
+
+.checkButton {
+  width: 6%; }
+
+.listField {
+  width: 80%;
+  height: 30px;
+  border: none; }
+
+.deleteButton {
+  float: right;
+  border: none;
+  width: 6%;
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 20px;
+  color: darkolivegreen;
+  font-weight: bold;
+  opacity: 0.5;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease; }
+  .deleteButton:hover {
+    opacity: 1;
+    cursor: pointer; }
+
+.completed {
+  text-decoration: line-through; }
