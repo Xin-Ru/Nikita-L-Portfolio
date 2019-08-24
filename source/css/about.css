@@ -174,12 +174,12 @@ table {
 
 /*media queries*/
 @font-face {
-  font-family: 'Noto Sans TC', sans-serif;
-  src: url("https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,700&display=swap"); }
+  font-family: 'Nunito', sans-serif;
+  src: url("https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap"); }
 
 @font-face {
-  font-family: 'Press Start 2P', cursive;
-  src: url("https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap"); }
+  font-family: 'Noto Sans TC', sans-serif;
+  src: url("https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,700&display=swap"); }
 
 * {
   -webkit-box-sizing: border-box;
@@ -194,7 +194,7 @@ html {
   width: 100%;
   min-height: 100%;
   height: auto;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Noto Sans TC', sans-serif;
   background-color: #12123A;
   overflow-x: hidden; }
 
@@ -284,7 +284,8 @@ html {
   color: #DD46F0;
   letter-spacing: 2px;
   text-align: center;
-  font-weight: 700; }
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif; }
   @media (max-width: 749px) {
     .pageTitle {
       font-size: 1.7rem;
@@ -298,7 +299,8 @@ html {
   font-weight: 700;
   letter-spacing: 2px;
   font-size: 1.2rem;
-  margin: 50px 0; }
+  margin: 50px 0;
+  font-family: 'Nunito', sans-serif; }
   @media (max-width: 749px) {
     .sectionTitle {
       font-size: 1rem; } }
@@ -311,7 +313,8 @@ nav {
   z-index: 10;
   -webkit-transition: .3s ease;
   -o-transition: .3s ease;
-  transition: .3s ease; }
+  transition: .3s ease;
+  font-family: 'Nunito', sans-serif; }
   @media (max-width: 749px) {
     nav {
       height: 100px; } }
@@ -450,7 +453,8 @@ nav {
   position: fixed;
   z-index: 12;
   right: -100vw;
-  top: 0; }
+  top: 0;
+  font-family: 'Nunito', sans-serif; }
 
 .mobileMenu {
   width: 100%;
@@ -493,7 +497,8 @@ nav {
 /*FOOTER*/
 footer {
   width: 100%;
-  height: 200px; }
+  height: 200px;
+  font-family: 'Nunito', sans-serif; }
   @media (max-width: 749px) {
     footer {
       height: auto;
@@ -606,21 +611,55 @@ footer {
 
 .about__contentBox {
   margin-top: 30px; }
+  @media (max-width: 749px) {
+    .about__contentBox {
+      -webkit-flex-direction: column;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column; } }
 
 .about__photo {
   width: 35%; }
   .about__photo img {
     max-width: 400px;
     width: 100%; }
+  @media (min-width: 750px) and (max-width: 969px) {
+    .about__photo {
+      width: 45%; } }
+  @media (max-width: 749px) {
+    .about__photo {
+      width: 100%;
+      margin: 0 0 40px 0; } }
 
 .about__description {
   width: 65%; }
+  @media (min-width: 750px) and (max-width: 969px) {
+    .about__description {
+      width: 55%; } }
+  @media (max-width: 749px) {
+    .about__description {
+      width: 100%; } }
 
 .about__description--left {
   padding-right: 50px; }
+  @media (min-width: 750px) and (max-width: 969px) {
+    .about__description--left {
+      width: 55%;
+      padding-right: 40px; } }
+  @media (max-width: 749px) {
+    .about__description--left {
+      padding-right: 0px; } }
 
 .about__description--right {
   padding-left: 50px; }
+  @media (min-width: 750px) and (max-width: 969px) {
+    .about__description--right {
+      width: 55%;
+      padding-left: 40px; } }
+  @media (max-width: 749px) {
+    .about__description--right {
+      padding-left: 0px; } }
 
 .about__name,
 .about__nameTW {
@@ -676,6 +715,9 @@ footer {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column; }
+  @media (max-width: 749px) {
+    .chat {
+      margin: 0 auto 0 auto; } }
 
 .chat__text {
   width: 100%;
@@ -684,3 +726,6 @@ footer {
   font-size: 2rem;
   letter-spacing: 4px;
   padding: 10px 0; }
+  @media (max-width: 749px) {
+    .chat__text {
+      font-size: 1rem; } }
