@@ -1,0 +1,845 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap");
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol,
+ul {
+  list-style: none; }
+
+blockquote,
+q {
+  quotes: none; }
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+@font-face {
+  font-family: Futura;
+  src: url(../font/Futura_B.ttf); }
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family: 'Roboto', sans-serif;
+  overflow-y: hidden; }
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* FlexBox */
+.previewTodo, .previewTodoTitle, .allTodoSec__menu ul li a, .allTodoSec_todoList, .allTodo, .allTodoTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.currentTextBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start; }
+
+.playPreviewTodo, .playAllTodo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.playPreviewTodo a, .playAllTodo a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.allTodoSec, .allTodoSec_toggleBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+/*media queries*/
+.wrapper {
+  width: 100%;
+  position: relative; }
+
+.menuItem--active {
+  color: #FF4384 !important; }
+
+.section {
+  width: 100%;
+  height: 100vh; }
+
+.section_lightBg {
+  background-color: #FFEDF7; }
+
+.allTodoSec {
+  -webkit-flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  position: absolute;
+  z-index: 2;
+  background-color: #003164;
+  top: 0;
+  left: 100vw;
+  padding: 70px 100px 0 100px;
+  -webkit-transition: .6s ease;
+  -o-transition: .6s ease;
+  transition: .6s ease;
+  overflow: hidden; }
+
+.control_container {
+  height: 100%;
+  float: left;
+  padding: 60px 100px; }
+
+.leftControl {
+  width: 63%; }
+
+.rightControl {
+  width: 37%;
+  background-color: #003164; }
+
+.leftControl_content {
+  position: relative;
+  height: 100%; }
+
+.input_container {
+  max-width: 600px;
+  width: 80%;
+  height: 20%; }
+
+.addField {
+  width: 90%;
+  height: 56px;
+  border: none;
+  background-color: #FFFFFF;
+  padding: 10px 15px;
+  font-size: 1vw;
+  font-style: italic;
+  color: #FF4384;
+  font-weight: 700;
+  float: left; }
+
+.addField:focus {
+  outline: none; }
+
+.addBtn {
+  width: 10%;
+  height: 56px;
+  border: none;
+  padding: 0;
+  background-color: #FFFFFF;
+  color: #FF4384; }
+  .addBtn:hover {
+    cursor: pointer; }
+
+::-webkit-input-placeholder {
+  color: #FF4384;
+  opacity: 1;
+  font-weight: 700;
+  font-size: 1vw;
+  font-style: italic;
+  /* Firefox */ }
+
+:-ms-input-placeholder {
+  color: #FF4384;
+  opacity: 1;
+  font-weight: 700;
+  font-size: 1vw;
+  font-style: italic;
+  /* Firefox */ }
+
+::-ms-input-placeholder {
+  color: #FF4384;
+  opacity: 1;
+  font-weight: 700;
+  font-size: 1vw;
+  font-style: italic;
+  /* Firefox */ }
+
+::placeholder {
+  color: #FF4384;
+  opacity: 1;
+  font-weight: 700;
+  font-size: 1vw;
+  font-style: italic;
+  /* Firefox */ }
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #FF4384;
+  font-size: 1vw;
+  font-weight: 700;
+  font-style: italic; }
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #FF4384;
+  font-weight: 700;
+  font-size: 1vw;
+  font-style: italic; }
+
+.timer_container {
+  width: 100%;
+  height: 55%;
+  padding-top: 5%;
+  position: relative; }
+
+.timer_conunterBox {
+  max-width: 600px;
+  width: 80%;
+  height: 100%; }
+
+.currentTodoBox {
+  width: 100%;
+  height: 48px; }
+
+.checkBox {
+  float: left;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* On mouse-over, add a blue background color */
+  /* When the radio button is checked, add a blue background */ }
+  .checkBox .radioCheck {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer; }
+  .checkBox .checkmark {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background-color: none;
+    border-radius: 50%;
+    border: 2px solid #003164;
+    -webkit-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    transition: 0.3s ease; }
+  .checkBox:hover .radioCheck ~ .checkmark {
+    background-color: #003164; }
+
+.checkedCheckMark {
+  background-color: #003164; }
+
+.allTodo_checkedCheckMark {
+  background-color: white; }
+
+.currentCheckBox {
+  width: 48px;
+  height: 48px; }
+  .currentCheckBox .radioCheck {
+    width: 48px;
+    height: 48px; }
+  .currentCheckBox .checkmark {
+    width: 48px;
+    height: 48px; }
+
+.smallCheckBox {
+  width: 25px;
+  height: 25px; }
+  .smallCheckBox .radioCheck {
+    width: 25px;
+    height: 25px; }
+  .smallCheckBox .checkmark {
+    width: 25px;
+    height: 25px; }
+
+.currentTextBox {
+  width: calc(100% - 48px);
+  height: 48px;
+  padding-left: 15px;
+  -webkit-flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+  .currentTextBox label {
+    width: 100%;
+    height: 28px;
+    font-size: 1.45vw;
+    font-weight: 700;
+    color: #003164;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; }
+
+.progressTomatoBox {
+  width: 100%;
+  height: calc(100% - 28px); }
+  .progressTomatoBox ul {
+    width: 100%;
+    height: 100%;
+    padding-top: 5px; }
+    .progressTomatoBox ul li {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid #FF4384;
+      float: left;
+      margin-right: 6px; }
+
+.counter {
+  width: 100%;
+  margin-top: 20px;
+  font-size: 10vw;
+  font-weight: 700;
+  color: #FF4384; }
+
+.timer_circleBox {
+  position: absolute;
+  min-width: 40vw;
+  height: 40vw;
+  top: calc(50% - 20vw);
+  left: calc(100% - 20vw + 100px); }
+
+.clock {
+  width: 100%;
+  height: 100%;
+  position: relative; }
+
+.playTimerBtn {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease; }
+  .playTimerBtn img {
+    width: 100%; }
+
+.playTimerBtnHide {
+  display: none; }
+
+.stopTimerBtn {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease; }
+  .stopTimerBtn img {
+    width: 100%; }
+
+.stopTimerBtnHide {
+  display: none; }
+
+.endTimerBtn {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: calc(50% + 40px);
+  left: calc(50% + 55px);
+  background-color: #fff;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease; }
+  .endTimerBtn:hover {
+    -webkit-transform: scale(1.5, 1.5);
+    -ms-transform: scale(1.5, 1.5);
+    transform: scale(1.5, 1.5); }
+
+.endTimerBtnRed {
+  background-color: #FF4384; }
+
+.progress {
+  width: 100%;
+  height: 100%;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg); }
+
+.progressValue,
+.progressValueB {
+  stroke-dasharray: 339.292;
+  stroke-dashoffset: 0; }
+
+.leftbackCircle {
+  stroke-dasharray: 339.292;
+  stroke-dashoffset: 0;
+  stroke: #FFEDF7; }
+
+.rightbackCircle {
+  stroke-dasharray: 339.292;
+  stroke-dashoffset: 169.646;
+  stroke: #003164; }
+
+.defaultCircle,
+.defaultCircleB,
+.progressValue,
+.progressValueB {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease; }
+
+.previewTodos_container {
+  max-width: 600px;
+  width: 80%;
+  height: calc(25% - 25px); }
+  .previewTodos_container ul {
+    width: 100%;
+    height: 100%; }
+
+.noDataLabel {
+  color: #FF4384;
+  opacity: 0.5;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  font-size: 1.5rem; }
+
+.previewTodo {
+  width: 100%;
+  height: calc(100% / 3);
+  border-bottom: 2px solid #e6e6e6; }
+
+.previewTodoTitle {
+  width: calc(90% - 25px);
+  color: #003164;
+  font-weight: bold;
+  height: 100%;
+  padding-left: 15px;
+  font-size: 1.3rem; }
+
+.todoCompletedLine {
+  text-decoration: line-through; }
+
+.playPreviewTodo {
+  width: 15%;
+  height: 100%; }
+  .playPreviewTodo a {
+    width: 100%;
+    height: 100%; }
+    .playPreviewTodo a img {
+      width: 35px;
+      height: 35px; }
+
+.seeAllTodos {
+  border: none;
+  color: #FF4384;
+  background-color: rgba(255, 255, 255, 0);
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  height: 25px;
+  padding-top: 10px;
+  float: right;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease; }
+  .seeAllTodos:hover {
+    opacity: 0.3;
+    cursor: pointer; }
+
+.menuicon_container {
+  width: 40px;
+  height: 100%;
+  float: right;
+  position: relative; }
+  .menuicon_container ul {
+    width: 100%;
+    height: 100%; }
+    .menuicon_container ul li {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 40px; }
+      .menuicon_container ul li a {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: 0.3s ease;
+        trnasition: 0.3s ease; }
+        .menuicon_container ul li a:hover {
+          opacity: 0.6; }
+        .menuicon_container ul li a img {
+          width: 100%; }
+
+.webLabel {
+  font-family: 'Futura';
+  color: white;
+  font-size: 2rem;
+  letter-spacing: 4px;
+  position: absolute;
+  right: -67px;
+  bottom: 67px;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg); }
+
+/* All To-do Section*/
+.allTodoSec__menu {
+  width: 30%;
+  height: 100%;
+  position: relative; }
+  .allTodoSec__menu ul {
+    width: 100%; }
+    .allTodoSec__menu ul li {
+      display: inline-block;
+      width: 100%;
+      margin: 0 0 40px 0; }
+      .allTodoSec__menu ul li a {
+        width: 100%;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        -webkit-transition: .3s ease;
+        -o-transition: .3s ease;
+        transition: .3s ease; }
+        .allTodoSec__menu ul li a:hover {
+          color: #FF4384; }
+        .allTodoSec__menu ul li a img {
+          width: 35px;
+          margin-right: 20px; }
+
+.thumb_countDown {
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  bottom: 0; }
+
+.thumb_countDown_container {
+  width: 100%;
+  height: 100%;
+  position: relative; }
+
+.thumb_circle {
+  position: absolute;
+  left: 0;
+  bottom: -150px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: #FFEDF7; }
+
+.thumb_counter {
+  width: 100%;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #FF4384;
+  letter-spacing: 2px;
+  position: absolute;
+  top: 60px; }
+
+.thumb_currentTodo {
+  width: 250px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #003164;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  position: absolute;
+  top: 122px;
+  left: 25px; }
+
+.thumb_clock {
+  position: absolute;
+  left: 95px;
+  bottom: 100px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #003164;
+  z-index: 2; }
+
+/* All Todo List Sec */
+.allTodoSec_todoList {
+  -webkit-flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  overflow-y: scroll; }
+
+.allTodoSec_todoList::-webkit-scrollbar {
+  width: 0px;
+  background-color: #F5F5F5; }
+
+.allTodoSec_todoList::-webkit-scrollbar-thumb {
+  background-color: #000000; }
+
+.allTodoSec_inputContainer {
+  height: auto; }
+
+.allTodoSec_todoBox {
+  max-width: 600px;
+  width: 80%; }
+
+.allTodoSec_doneBox {
+  max-width: 600px;
+  width: 80%;
+  margin-bottom: 30px; }
+
+.allTodoSec_toggleBtn {
+  width: 100%;
+  padding: 15px 15px;
+  color: white;
+  text-decoration: none;
+  background-color: #335A83;
+  margin-top: 50px;
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 1.5px;
+  -webkit-transition: .3s ease;
+  -o-transition: .3s ease;
+  transition: .3s ease; }
+  .allTodoSec_toggleBtn:hover {
+    opacity: 0.7; }
+
+.allTodoSec_noDataLabel {
+  margin: 20px 0 0 0;
+  color: rgba(255, 255, 255, 0.5); }
+
+.allTodo {
+  width: 100%;
+  border-bottom: 2px solid rgba(51, 90, 131, 0.5); }
+
+.allTodo_checkBox {
+  float: left;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* On mouse-over, add a blue background color */ }
+  .allTodo_checkBox .allTodo_radioCheck {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer; }
+  .allTodo_checkBox .allTodo_checkmark {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background-color: none;
+    border-radius: 50%;
+    border: 2px solid white;
+    -webkit-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    transition: 0.3s ease; }
+  .allTodo_checkBox:hover .allTodo_radioCheck ~ .allTodo_checkmark {
+    background-color: white; }
+
+.smallCheckBox .allTodo_checkmark {
+  width: 25px;
+  height: 25px; }
+
+.allTodoTitle {
+  width: calc(90% - 25px);
+  color: white;
+  font-weight: 700;
+  height: 100%;
+  padding: 15px 0 15px 15px;
+  font-size: 1.3rem; }
+
+.playAllTodo {
+  width: 15%;
+  height: 100%; }
+  .playAllTodo a {
+    width: 100%;
+    height: 100%; }
+    .playAllTodo a img {
+      width: 35px;
+      height: 35px; }
+
+/* CloseBox*/
+.allTodoSec_closeBox {
+  position: relative;
+  width: 20%;
+  height: 100%; }
+
+.allTodoSec_closeBtn {
+  width: 45px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: white;
+  -webkit-transition: .3s ease;
+  -o-transition: .3s ease;
+  transition: .3s ease; }
+  .allTodoSec_closeBtn:hover {
+    opacity: 0.7; }
+
+.allTodoSec_closeIcon {
+  font-size: 4rem; }
+
+.allTodoSec_webLabel {
+  bottom: 120px; }

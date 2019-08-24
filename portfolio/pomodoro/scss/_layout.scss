@@ -1,0 +1,770 @@
+.wrapper {
+    width: 100%;
+    position: relative;
+}
+
+.menuItem--active {
+    color: $red !important;
+}
+
+.section {
+    width: 100%;
+    height: 100vh;
+}
+
+.section_lightBg {
+    background-color: $pink;
+}
+
+.allTodoSec {
+    @extend %flex_between;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    position: absolute;
+    z-index: 2;
+    background-color: $darkblue;
+    top: 0;
+    left: 100vw;
+    padding: 70px 100px 0 100px;
+    -webkit-transition: .6s ease;
+    transition: .6s ease;
+    overflow: hidden;
+}
+
+// Sec A
+.control_container {
+    height: 100%;
+    float: left;
+    padding: 60px 100px;
+}
+
+.leftControl {
+    width: 63%;
+}
+
+.rightControl {
+    width: 37%;
+    background-color: $darkblue;
+}
+
+.leftControl_content {
+    position: relative;
+    height: 100%;
+}
+
+.input_container {
+    max-width: 600px;
+    width: 80%;
+    height: 20%;
+}
+
+.addField {
+    width: 90%;
+    height: 56px;
+    border: none;
+    background-color: $white;
+    padding: 10px 15px;
+    font-size: 1vw;
+    font-style: italic;
+    color: $red;
+    font-weight: 700;
+    float: left;
+}
+
+.addField:focus {
+    outline: none;
+}
+
+.addBtn {
+    width: 10%;
+    height: 56px;
+    border: none;
+    padding: 0;
+    background-color: $white;
+    color: $red;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+
+// Placeholder
+::placeholder {
+    color: $red;
+    opacity: 1;
+    font-weight: 700;
+    font-size: 1vw;
+    font-style: italic;
+    /* Firefox */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: $red;
+    font-size: 1vw;
+    font-weight: 700;
+    font-style: italic;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: $red;
+    font-weight: 700;
+    font-size: 1vw;
+    font-style: italic;
+}
+
+// Timer Container
+.timer_container {
+    width: 100%;
+    height: 55%;
+    padding-top: 5%;
+    position: relative;
+}
+
+.timer_conunterBox {
+    max-width: 600px;
+    width: 80%;
+    height: 100%;
+}
+
+.currentTodoBox {
+    width: 100%;
+    height: 48px;
+}
+
+.checkBox {
+    float: left;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    .radioCheck {
+        width: 48px;
+        height: 48px;
+        position: absolute;
+        opacity: 0;
+        z-index: 1;
+        cursor: pointer;
+    }
+
+    // Custom checkbox
+    .checkmark {
+        width: 48px;
+        height: 48px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        background-color: none;
+        border-radius: 50%;
+        border: 2px solid $darkblue;
+        -webkit-transition: 0.3s ease;
+        transition: 0.3s ease;
+    }
+
+    /* On mouse-over, add a blue background color */
+    &:hover .radioCheck~.checkmark {
+        background-color: $darkblue;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    // .radioCheck:checked~.checkmark {
+    //     background-color: $darkblue;
+    // }
+}
+
+.checkedCheckMark {
+    background-color: $darkblue;
+}
+
+.allTodo_checkedCheckMark {
+    background-color: white;
+}
+
+.currentCheckBox {
+    width: 48px;
+    height: 48px;
+
+    .radioCheck {
+        width: 48px;
+        height: 48px;
+    }
+
+    .checkmark {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+.smallCheckBox {
+    width: 25px;
+    height: 25px;
+
+    .radioCheck {
+        width: 25px;
+        height: 25px;
+    }
+
+    .checkmark {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+.currentTextBox {
+    width: calc(100% - 48px);
+    height: 48px;
+    padding-left: 15px;
+    @extend %flex_left_colCenter;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+
+    label {
+        width: 100%;
+        height: 28px;
+        // font-size: 1.75rem;
+        font-size: 1.45vw;
+        font-weight: 700;
+        color: $darkblue;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+.progressTomatoBox {
+    width: 100%;
+    height: calc(100% - 28px);
+
+    ul {
+        width: 100%;
+        height: 100%;
+        padding-top: 5px;
+
+        li {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 1px solid $red;
+            float: left;
+            margin-right: 6px;
+        }
+    }
+}
+
+.counter {
+    width: 100%;
+    margin-top: 20px;
+    font-size: 10vw;
+    font-weight: 700;
+    color: $red;
+}
+
+.timer_circleBox {
+    position: absolute;
+    min-width: 40vw;
+    height: 40vw;
+    top: calc(50% - 20vw);
+    left: calc(100% - 20vw + 100px);
+}
+
+.clock {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.playTimerBtn {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+
+    img {
+        width: 100%;
+    }
+}
+
+.playTimerBtnHide {
+    display: none;
+}
+
+.stopTimerBtn {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+
+    img {
+        width: 100%;
+    }
+}
+
+.stopTimerBtnHide {
+    display: none;
+}
+
+.endTimerBtn {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: calc(50% + 40px);
+    left: calc(50% + 55px);
+    background-color: #fff;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+
+    &:hover {
+        transform: scale(1.5, 1.5);
+    }
+}
+
+.endTimerBtnRed {
+    background-color: $red;
+}
+
+
+// Progress Circle
+.progress {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.progressValue,
+.progressValueB {
+    stroke-dasharray: 339.292;
+    stroke-dashoffset: 0;
+}
+
+.leftbackCircle {
+    stroke-dasharray: 339.292;
+    stroke-dashoffset: 0;
+    stroke: $pink;
+}
+
+.rightbackCircle {
+    stroke-dasharray: 339.292;
+    stroke-dashoffset: 169.646;
+    stroke: $darkblue;
+}
+
+.defaultCircle,
+.defaultCircleB,
+.progressValue,
+.progressValueB {
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+
+// PreviewTodos Container
+.previewTodos_container {
+    max-width: 600px;
+    width: 80%;
+    height: calc(25% - 25px);
+
+    ul {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.noDataLabel {
+    color: $red;
+    opacity: 0.5;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    font-size: 1.5rem;
+}
+
+.previewTodo {
+    @extend %flex_left;
+    width: 100%;
+    height: calc(100% / 3);
+    border-bottom: 2px solid rgb(230, 230, 230);
+}
+
+.previewTodoTitle {
+    width: calc(90% - 25px);
+    @extend %flex_left;
+    color: $darkblue;
+    font-weight: bold;
+    height: 100%;
+    padding-left: 15px;
+    font-size: 1.3rem;
+}
+
+.todoCompletedLine {
+    text-decoration: line-through;
+}
+
+.playPreviewTodo {
+    @extend %flex_center;
+    width: 15%;
+    height: 100%;
+
+    a {
+        @extend %flex_right_center;
+        width: 100%;
+        height: 100%;
+
+        img {
+            width: 35px;
+            height: 35px;
+        }
+    }
+}
+
+.seeAllTodos {
+    border: none;
+    color: $red;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 1.3rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    height: 25px;
+    padding-top: 10px;
+    float: right;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+
+    &:hover {
+        opacity: 0.3;
+        cursor: pointer;
+    }
+}
+
+// RightControlSide
+.menuicon_container {
+    width: 40px;
+    height: 100%;
+    float: right;
+    position: relative;
+
+    ul {
+        width: 100%;
+        height: 100%;
+
+        li {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 40px;
+
+            a {
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+                -webkit-transition: 0.3s ease;
+                trnasition: 0.3s ease;
+
+                &:hover {
+                    opacity: 0.6;
+                }
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.webLabel {
+    font-family: 'Futura';
+    color: white;
+    font-size: 2rem;
+    letter-spacing: 4px;
+    position: absolute;
+    right: -67px;
+    bottom: 67px;
+    transform: rotate(90deg);
+}
+
+/* All To-do Section*/
+.allTodoSec__menu {
+    width: 30%;
+    height: 100%;
+    position: relative;
+
+    ul {
+        width: 100%;
+
+        li {
+            display: inline-block;
+            width: 100%;
+            margin: 0 0 40px 0;
+
+            a {
+                @extend %flex_left;
+                width: 100%;
+                flex-direction: row;
+                text-decoration: none;
+                color: rgba(255, 255, 255, .3);
+                font-size: 2rem;
+                font-weight: 700;
+                letter-spacing: 1px;
+                -webkit-transition: .3s ease;
+                transition: .3s ease;
+
+                &:hover {
+                    color: $red;
+                }
+
+                img {
+                    width: 35px;
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+}
+
+.thumb_countDown {
+    width: 100%;
+    height: 200px;
+    position: absolute;
+    bottom: 0;
+}
+
+.thumb_countDown_container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.thumb_circle {
+    position: absolute;
+    left: 0;
+    bottom: -150px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: $pink;
+}
+
+.thumb_counter {
+    width: 100%;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    color: $red;
+    letter-spacing: 2px;
+    position: absolute;
+    top: 60px;
+}
+
+.thumb_currentTodo {
+    width: 250px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: $darkblue;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    top: 122px;
+    left: 25px;
+}
+
+.thumb_clock {
+    position: absolute;
+    left: 95px;
+    bottom: 100px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: $darkblue;
+    z-index: 2;
+}
+
+/* All Todo List Sec */
+
+.allTodoSec_todoList {
+    @extend %flex_left;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+// Scrollbar
+.allTodoSec_todoList::-webkit-scrollbar-track {
+    // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    // background-color: #F5F5F5;
+}
+
+.allTodoSec_todoList::-webkit-scrollbar {
+    width: 0px;
+    background-color: #F5F5F5;
+}
+
+.allTodoSec_todoList::-webkit-scrollbar-thumb {
+    background-color: #000000;
+}
+
+// Scroll Bar End
+
+.allTodoSec_inputContainer {
+    height: auto;
+}
+
+.allTodoSec_todoBox {
+    max-width: 600px;
+    width: 80%;
+}
+
+.allTodoSec_doneBox {
+    max-width: 600px;
+    width: 80%;
+    margin-bottom: 30px;
+}
+
+.allTodoSec_toggleBtn {
+    width: 100%;
+    @extend %flex_between;
+    padding: 15px 15px;
+    color: white;
+    text-decoration: none;
+    background-color: #335A83;
+    margin-top: 50px;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 1.5px;
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+.allTodoSec_noDataLabel {
+    margin: 20px 0 0 0;
+    color: rgba(255, 255, 255, .5);
+}
+
+.allTodo {
+    @extend %flex_left;
+    width: 100%;
+    border-bottom: 2px solid rgba(51, 90, 131, .5);
+}
+
+.allTodo_checkBox {
+    float: left;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    .allTodo_radioCheck {
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        opacity: 0;
+        z-index: 1;
+        cursor: pointer;
+    }
+
+    // Custom checkbox
+    .allTodo_checkmark {
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        background-color: none;
+        border-radius: 50%;
+        border: 2px solid white;
+        -webkit-transition: 0.3s ease;
+        transition: 0.3s ease;
+    }
+
+    /* On mouse-over, add a blue background color */
+    &:hover .allTodo_radioCheck~.allTodo_checkmark {
+        background-color: white;
+    }
+}
+
+.smallCheckBox {
+    .allTodo_checkmark {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+.allTodoTitle {
+    width: calc(90% - 25px);
+    @extend %flex_left;
+    color: white;
+    font-weight: 700;
+    height: 100%;
+    padding: 15px 0 15px 15px;
+    font-size: 1.3rem;
+}
+
+.playAllTodo {
+    @extend %flex_center;
+    width: 15%;
+    height: 100%;
+
+    a {
+        @extend %flex_right_center;
+        width: 100%;
+        height: 100%;
+
+        img {
+            width: 35px;
+            height: 35px;
+        }
+    }
+}
+
+
+/* CloseBox*/
+
+.allTodoSec_closeBox {
+    position: relative;
+    width: 20%;
+    height: 100%;
+}
+
+.allTodoSec_closeBtn {
+    width: 45px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: white;
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+.allTodoSec_closeIcon {
+    font-size: 4rem;
+}
+
+.allTodoSec_webLabel {
+    bottom: 120px;
+}

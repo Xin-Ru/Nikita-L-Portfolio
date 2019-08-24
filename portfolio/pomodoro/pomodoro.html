@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nikita L - POMODORO</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.css">
+    <!-- Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+
+<body>
+    <div class="wrapper" id="app">
+        <div class="section section_lightBg">
+            <div class="control_container leftControl">
+                <div class="leftControl_content">
+                    <div class="input_container">
+                        <input class="addField" type="text" placeholder="ADD A NEW MISSION..." @keyup.enter="addTodo"
+                            v-model="newTodo">
+                        <button type="button" class="addBtn" @click="addTodo"><i class="material-icons">
+                                add
+                            </i>
+                        </button>
+                    </div>
+                    <div class="timer_container">
+                        <div class="timer_conunterBox">
+                            <div class="currentTodoBox">
+                                <div class="checkBox currentCheckBox">
+                                    <input type="radio" name="radio" class="radioCheck">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <div class="currentTextBox">
+                                    <label>{{ currentTodo }}</label>
+                                    <div class="progressTomatoBox">
+                                        <ul>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="counter">{{clock}}</div>
+                        </div>
+                        <div class="timer_circleBox">
+                            <div class="clock">
+                                <svg class="progress" width="120" height="120" viewBox="0 0 120 120">
+                                    <circle class="defaultCircle" cx="60" cy="60" r="54" stroke-width="8" />
+                                    <circle class="leftbackCircle" cx="60" cy="60" r="54" fill="none"
+                                        stroke-width="6" />
+                                    <circle class="rightbackCircle" cx="60" cy="60" r="54" fill="none"
+                                        stroke-width="6" />
+                                    <circle class="progressValue" cx="60" cy="60" r="54" stroke-width="6" />
+                                </svg>
+                                <a href="#" class="playTimerBtn" :class="{'playTimerBtnHide':timerStart}"
+                                    @click.prevent="setTime"><img src="img/playWhiteIcon.svg" alt="palyCounter"></a>
+                                <a href="#" class="stopTimerBtn" :class="{'stopTimerBtnHide':!timerStart}"
+                                    @click.prevent="stopTime"><img src="img/stopIcon.svg" alt="stopCounter"></a>
+                                <a href="#" class="endTimerBtn" :class="{'endTimerBtnRed':timerStart}"
+                                    @click.prevent="clearTimer"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="previewTodos_container">
+                        <ul>
+                            <div class="noDataLabel" v-if="noData">Create some missions...</div>
+                            <li class="previewTodo" v-for="(item,key) in cacheTodo" v-if="key <= 2">
+                                <div class="checkBox smallCheckBox">
+                                    <input type="checkbox" name="radio" class="radioCheck" v-model="item.completed"
+                                        :id="item.id">
+                                    <span class="checkmark" :class="{'checkedCheckMark':item.completed}"></span>
+                                </div>
+                                <div class="previewTodoTitle" :class="{'todoCompletedLine':item.completed}">
+                                    {{item.title}}</div>
+                                <div class="playPreviewTodo"><a href="#"><img src="img/play.svg" alt="play icon"></a>
+                                </div>
+                            </li>
+                        </ul>
+                        <button class="seeAllTodos" v-if="moreData" @click.prevent="openFoldedTodo">{{moreNum}}
+                            MORE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="control_container rightControl">
+                <div class="menuicon_container">
+                    <ul>
+                        <li><a href="#" @click.prevent="openFoldedTodo"><img src="img/list.svg" alt="list"></a></li>
+                        <!-- <li><a href="#"><img src="img/analytics.svg" alt="analytics"></a></li>
+                        <li><a href="#"><img src="img/music.svg" alt="music"></a></li> -->
+                    </ul>
+                    <div class="webLabel">POMODORO</div>
+                </div>
+            </div>
+        </div>
+        <div class="section allTodoSec">
+            <div class="allTodoSec__menu">
+                <ul>
+                    <li><a href="#" class="menuItem--active"><img src="img/list.svg" alt="list">TO-DO LIST</a></li>
+                    <!-- <li><a href="#"><img src="img/analytics.svg" alt="analytics">ANALYTICS</a></li>
+                    <li><a href="#"><img src="img/music.svg" alt="music">RINGTONES</a></li> -->
+                </ul>
+                <div class="thumb_countDown">
+                    <div class="thumb_countDown_container">
+                        <div class="thumb_clock">
+                            <svg class="progress" width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="defaultCircleB" cx="60" cy="60" r="54" stroke-width="8" />
+                                <circle class="leftbackCircle" cx="60" cy="60" r="54" fill="none" stroke-width="6" />
+                                <circle class="rightbackCircle" cx="60" cy="60" r="54" fill="none" stroke-width="6" />
+                                <circle class="progressValueB" cx="60" cy="60" r="54" stroke-width="6" />
+                            </svg>
+                            <a href="#" class="playTimerBtn" :class="{'playTimerBtnHide':timerStart}"
+                                @click.prevent="setTime"><img src="img/playWhiteIcon.svg" alt="palyCounter"></a>
+                            <a href="#" class="stopTimerBtn" :class="{'stopTimerBtnHide':!timerStart}"
+                                @click.prevent="stopTime"><img src="img/stopIcon.svg" alt="stopCounter"></a>
+                            <a href="#" class="endTimerBtn" :class="{'endTimerBtnRed':timerStart}"
+                                @click.prevent="clearTimer"></a>
+                        </div>
+                        <div class="thumb_circle">
+                            <div class="thumb_counter">{{clock}}</div>
+                            <div class="thumb_currentTodo">First thing to do today ahhhhaadasda</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="allTodoSec_todoList">
+                <div class="input_container allTodoSec_inputContainer">
+                    <input class="addField" type="text" placeholder="ADD A NEW MISSION..." @keyup.enter="addTodo"
+                        v-model="newTodo">
+                    <button type="button" class="addBtn" @click="addTodo"><i class="material-icons">
+                            add
+                        </i>
+                    </button>
+                </div>
+                <div class="allTodoSec_todoBox">
+                    <a href="#" class="allTodoSec_toggleBtn" @click.prevent="toggleAllTodo">TO-DO<i
+                            class="material-icons" id="toggleBtnIcon">
+                            arrow_drop_up
+                        </i></a>
+                    <ul class="allTodo_container">
+                        <div class="noDataLabel allTodoSec_noDataLabel" v-if="noData">Create some missions...</div>
+                        <li class="allTodo" v-for="(item,key) in cacheTodo" v-if="item.completed === false">
+                            <div class="allTodo_checkBox smallCheckBox">
+                                <input type="checkbox" name="radio" class="allTodo_radioCheck" v-model="item.completed"
+                                    :id="item.id">
+                                <span class="allTodo_checkmark"
+                                    :class="{'allTodo_checkedCheckMark':item.completed}"></span>
+                            </div>
+                            <div class="allTodoTitle" :class="{'todoCompletedLine':item.completed}">
+                                {{item.title}}</div>
+                            <div class="playAllTodo"><a href="#"><img src="img/playWhiteIcon.svg" alt="play icon"></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="allTodoSec_doneBox">
+                    <a href="#" class="allTodoSec_toggleBtn" @click.prevent="toggleDone">DONE<i class="material-icons"
+                            id="toggleDoneBtnIcon">
+                            arrow_drop_down
+                        </i></a>
+                    <ul class="doneTodo_container">
+                        <li class="allTodo" v-for="(item,key) in cacheTodo" v-if="item.completed === true">
+                            <div class="allTodo_checkBox smallCheckBox">
+                                <input type="checkbox" name="radio" class="allTodo_radioCheck" v-model="item.completed"
+                                    :id="item.id">
+                                <span class="allTodo_checkmark"
+                                    :class="{'allTodo_checkedCheckMark':item.completed}"></span>
+                            </div>
+                            <div class="allTodoTitle" :class="{'todoCompletedLine':item.completed}">
+                                {{item.title}}</div>
+                            <div class="playAllTodo"><a href="#"><img src="img/playWhiteIcon.svg" alt="play icon"></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="allTodoSec_closeBox">
+                <a href="#" class="allTodoSec_closeBtn" @click.prevent="closeFoldedTodo"><i
+                        class="material-icons allTodoSec_closeIcon">
+                        close
+                    </i></a>
+                <div class="webLabel allTodoSec_webLabel">POMODORO</div>
+            </div>
+        </div>
+    </div>
+    <script src="js/all.js"></script>
+</body>
+
+</html>
