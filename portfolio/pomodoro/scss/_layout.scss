@@ -412,8 +412,9 @@
 
 .playPreviewTodo {
     @extend %flex_center;
-    width: 15%;
+    width: 30px;
     height: 100%;
+    margin-left: 15px;
 
     a {
         @extend %flex_right_center;

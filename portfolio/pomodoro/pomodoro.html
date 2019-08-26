@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="viewport" content="viewport-fit=cover">
     <meta name="title" content="POMODORO | NIKITA L">
-    <meta name="description" content="使用 Vue.js 建置蕃茄鐘應用!">
+    <meta name="description" content="使用 Vue.js 建置蕃茄鐘應用。">
     <meta name="keywords"
         content="Pomodoro,FRONT-END DEVELOPER,Front-end,Developer,coding,website,website developer,蕃茄鐘,前端工程師,前端開發,NIKITA L,呂昕儒">
     <meta name="copyright" content="POMODORO | NIKITA L">
     <meta property="og:title" content="POMODORO | NIKITA L">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nikitaplanet.me/">
+    <meta property="og:url" content="https://nikitaplanet.me/portfolio/pomodoro/pomodoro.html">
     <meta property="og:image" content="https://nikitaplanet.me/source/img/works_cover/pomodoro.png">
-    <meta property="og:description" content="使用 Vue.js 建置蕃茄鐘應用!">
+    <meta property="og:description" content="使用 Vue.js 建置蕃茄鐘應用。">
     <meta property="og:site_name" content="POMODORO | NIKITA L">
     <link rel="shortcut icon" href="../../source/img/icons/favi.ico">
     <link rel="stylesheet" href="css/all.css">
@@ -40,7 +40,7 @@
                     </div>
                     <div class="timer_container">
                         <div class="timer_conunterBox">
-                            <div class="currentTodoBox">
+                            <div class="currentTodoBox" v-if="!noData">
                                 <div class="checkBox currentCheckBox">
                                     <input type="radio" name="radio" class="radioCheck">
                                     <span class="checkmark"></span>
@@ -82,15 +82,19 @@
                     <div class="previewTodos_container">
                         <ul>
                             <div class="noDataLabel" v-if="noData">Create some missions...</div>
-                            <li class="previewTodo" v-for="(item,key) in cacheTodo" v-if="key <= 2">
-                                <div class="checkBox smallCheckBox">
+                            <li class="previewTodo" v-for="(item,key) in activeTodos" v-if="key <= 2">
+                                <div class="checkBox smallCheckBox" v>
                                     <input type="checkbox" name="radio" class="radioCheck" v-model="item.completed"
                                         :id="item.id">
                                     <span class="checkmark" :class="{'checkedCheckMark':item.completed}"></span>
                                 </div>
                                 <div class="previewTodoTitle" :class="{'todoCompletedLine':item.completed}">
                                     {{item.title}}</div>
-                                <div class="playPreviewTodo"><a href="#"><img src="img/play.svg" alt="play icon"></a>
+                                <div class="playPreviewTodo"><a href="#" @click.prevent="runTodo"><img
+                                            src="img/play.svg" alt="play icon"></a>
+                                </div>
+                                <div class="playPreviewTodo"><a href="#" @click.prevent="deleteTodo(item)"><img
+                                            src="img/delete.svg" alt="delete icon"></a>
                                 </div>
                             </li>
                         </ul>
@@ -156,7 +160,7 @@
                         </i></a>
                     <ul class="allTodo_container">
                         <div class="noDataLabel allTodoSec_noDataLabel" v-if="noData">Create some missions...</div>
-                        <li class="allTodo" v-for="(item,key) in cacheTodo" v-if="item.completed === false">
+                        <li class="allTodo" v-for="(item,key) in activeTodos">
                             <div class="allTodo_checkBox smallCheckBox">
                                 <input type="checkbox" name="radio" class="allTodo_radioCheck" v-model="item.completed"
                                     :id="item.id">
@@ -165,7 +169,11 @@
                             </div>
                             <div class="allTodoTitle" :class="{'todoCompletedLine':item.completed}">
                                 {{item.title}}</div>
-                            <div class="playAllTodo"><a href="#"><img src="img/playWhiteIcon.svg" alt="play icon"></a>
+                            <div class="playPreviewTodo"><a href="#" @click.prevent="runTodo"><img src="img/play.svg"
+                                        alt="play icon"></a>
+                            </div>
+                            <div class="playPreviewTodo"><a href="#" @click.prevent="deleteTodo(item)"><img
+                                        src="img/delete.svg" alt="delete icon"></a>
                             </div>
                         </li>
                     </ul>
@@ -176,7 +184,7 @@
                             arrow_drop_down
                         </i></a>
                     <ul class="doneTodo_container">
-                        <li class="allTodo" v-for="(item,key) in cacheTodo" v-if="item.completed === true">
+                        <li class="allTodo" v-for="(item,key) in doneTodos">
                             <div class="allTodo_checkBox smallCheckBox">
                                 <input type="checkbox" name="radio" class="allTodo_radioCheck" v-model="item.completed"
                                     :id="item.id">
@@ -185,7 +193,8 @@
                             </div>
                             <div class="allTodoTitle" :class="{'todoCompletedLine':item.completed}">
                                 {{item.title}}</div>
-                            <div class="playAllTodo"><a href="#"><img src="img/playWhiteIcon.svg" alt="play icon"></a>
+                            <div class="playPreviewTodo"><a href="#" @click.prevent="deleteTodo(item)"><img
+                                        src="img/delete.svg" alt="delete icon"></a>
                             </div>
                         </li>
                     </ul>

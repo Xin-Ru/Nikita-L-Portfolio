@@ -38,9 +38,11 @@ let app = new Vue({
     el: "#app",
     data: {
         newTodo: '',
-        cacheTodo: [],
+        todos: [],
         currentTodo: '',
+        cacheTodo: {},
         cacheTitle: '',
+        visibility: "active",
         noData: true,
         moreData: false,
         moreNum: 0,
@@ -57,13 +59,22 @@ let app = new Vue({
             if (!value) {
                 return;
             }
-            this.cacheTodo.push({
+            this.todos.push({
                 id: timestamp,
                 title: value,
                 completed: false
             });
             this.newTodo = '';
-            this.checkTodo;
+        },
+        deleteTodo: function (todo) {
+            let vm = this;
+            let newIndex = vm.todos.findIndex(function (item, key) {
+                return todo.id === item.id;
+            })
+            this.todos.splice(newIndex, 1);
+        },
+        runTodo: function () {
+            alert("run");
         },
         timer() {
             this.timeFunc = setInterval(() => {
@@ -165,21 +176,50 @@ let app = new Vue({
         }
     },
     computed: {
-        checkTodo() {
-            if (this.cacheTodo.length > 0) {
+        activeTodos: function () {
+            let newTodos = [];
+            this.todos.forEach(function (item) {
+                if (!item.completed) {
+                    newTodos.push(item);
+                }
+            })
+            if (newTodos.length > 0) {
                 this.noData = false;
-                if (this.cacheTodo.length < 4) {
+                if (newTodos.length < 4) {
                     this.moreData = false;
                 } else {
                     this.moreData = true;
-                    this.moreNum = this.cacheTodo.length - 3;
+                    this.moreNum = newTodos.length - 3;
                 }
-                for (let i = 0; i < this.cacheTodo.length; i++) {
+            } else {
+                this.noData = true;
+                this.moreData = false;
+            }
+            return newTodos;
+        },
+        doneTodos: function () {
+            let newTodos = [];
+            this.todos.forEach(function (item) {
+                if (item.completed) {
+                    newTodos.push(item);
+                }
+            })
+            return newTodos;
+        },
+        checkTodo() {
+            if (this.todos.length > 0) {
+                this.noData = false;
+                if (this.todos.length < 4) {
+                    this.moreData = false;
+                } else {
+                    this.moreData = true;
+                    this.moreNum = this.todos.length - 3;
+                }
+                for (let i = 0; i < this.todos.length; i++) {
                     if (this.cacheTodo[i].completed === false) {
-                        this.currentTodo = this.cacheTodo[i].title;
+                        this.currentTodo = this.todos[i].title;
                         break;
                     }
-
                 }
             } else {
                 this.noData = true;
