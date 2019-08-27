@@ -21,7 +21,7 @@
     -webkit-flex-direction: row;
     flex-direction: row;
     position: absolute;
-    z-index: 2;
+    z-index: 20;
     background-color: $darkblue;
     top: 0;
     left: 100vw;
@@ -50,6 +50,7 @@
 .leftControl_content {
     position: relative;
     height: 100%;
+    z-index: 10;
 }
 
 .input_container {
@@ -255,8 +256,13 @@
             float: left;
             margin-right: 6px;
         }
+
+        .breakTomato {
+            border: 1px solid $lightblue;
+        }
     }
 }
+
 
 .counter {
     width: 100%;
@@ -272,6 +278,7 @@
     height: 40vw;
     top: calc(50% - 20vw);
     left: calc(100% - 20vw + 100px);
+    z-index: -1;
 }
 
 .clock {
@@ -408,6 +415,10 @@
 
 .todoCompletedLine {
     text-decoration: line-through;
+}
+
+.currentTodoColored {
+    color: $red;
 }
 
 .playPreviewTodo {

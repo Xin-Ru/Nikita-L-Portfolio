@@ -46,14 +46,12 @@
                                     <span class="checkmark"></span>
                                 </div>
                                 <div class="currentTextBox">
-                                    <label>{{ currentTodo }}</label>
+                                    <label>{{setCurrentTodo}}</label>
                                     <div class="progressTomatoBox">
                                         <ul>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
+                                            <li v-for="(item,key) in tomatos" v-if="key < 5"
+                                                :class="{'breakTomato':item.break}">
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -83,12 +81,13 @@
                         <ul>
                             <div class="noDataLabel" v-if="noData">Create some missions...</div>
                             <li class="previewTodo" v-for="(item,key) in activeTodos" v-if="key <= 2">
-                                <div class="checkBox smallCheckBox" v>
+                                <div class="checkBox smallCheckBox">
                                     <input type="checkbox" name="radio" class="radioCheck" v-model="item.completed"
                                         :id="item.id">
                                     <span class="checkmark" :class="{'checkedCheckMark':item.completed}"></span>
                                 </div>
-                                <div class="previewTodoTitle" :class="{'todoCompletedLine':item.completed}">
+                                <div class="previewTodoTitle"
+                                    :class="{'todoCompletedLine':item.completed,'currentTodoColored':item.isCurrentTodo}">
                                     {{item.title}}</div>
                                 <div class="playPreviewTodo"><a href="#" @click.prevent="runTodo"><img
                                             src="img/play.svg" alt="play icon"></a>
