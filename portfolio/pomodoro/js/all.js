@@ -39,8 +39,10 @@ let app = new Vue({
     data: {
         newTodo: '',
         todos: [],
-        currentTodo: 0,
+        currentTodoIndex: 0,
         currentTomato: 0,
+        currentTitle: "",
+        isRunTodo: false,
         tomatos: [],
         tomatoStatus: true,
         cacheTodo: {},
@@ -69,6 +71,7 @@ let app = new Vue({
                 isCurrentTodo: false
             });
             this.newTodo = '';
+            this.todos[this.currentTodoIndex].isCurrentTodo = true;
         },
         deleteTodo: function (todo) {
             let vm = this;
@@ -77,52 +80,50 @@ let app = new Vue({
             })
             this.todos.splice(newIndex, 1);
         },
-        runTodo: function () {
-            alert("run");
+        runTodo: function (todo) {
+            let vm = this;
+            let newIndex = vm.todos.findIndex(function (item, key) {
+                return todo.id === item.id;
+            });
+            this.currentTodoIndex = newIndex;
+            this.isRunTodo = true;
+            this.setCurrentTodo;
         },
-        // timer() {
-        //     this.timeFunc = setInterval(() => {
-        //         if (this.sessionTime === 0) {
-        //             clearInterval(counterInterval);
-        //         } else {
-        //             this.sessionTime--;
-        //             strokeOffset = strokeOffset + strokeCountInSecond;
-        //             progressBar[0].style.strokeDashoffset = strokeOffset;
-        //             progressBar[0].style.opacity = "1";
-        //             progressBarThumb[0].style.strokeDashoffset = strokeOffset;
-        //             progressBarThumb[0].style.opacity = "1";
-        //             middleCircle[0].style.fill = whiteColor;
-        //             middleCircleThumb[0].style.fill = whiteColor;
-        //             leftCircle[0].style.opacity = whiteColor;
-        //             rightCircle[0].style.opacity = whiteColor;
-        //         }
-        //     }, interval);
-        // },
         setTime() {
-            this.timerStart = true;
-            progressBar[0].style.opacity = "1";
-            progressBarThumb[0].style.opacity = "1";
-            middleCircle[0].style.fill = whiteColor;
-            middleCircleThumb[0].style.fill = whiteColor;
-            leftCircle[0].style.opacity = whiteColor;
-            rightCircle[0].style.opacity = whiteColor;
-
-            this.timeFunc = setInterval(() => {
-                if (this.sessionTime === 0) {
-                    progressBar[0].style.opacity = "0";
-                    progressBarThumb[0].style.opacity = "0";
-                    middleCircle[0].style.fill = mainRedColor;
-                    middleCircleThumb[0].style.fill = mainRedColor;
-                    leftCircle[0].style.opacity = whiteColor;
-                    rightCircle[0].style.opacity = whiteColor;
-                    // clearInterval(counterInterval);
-                } else {
-                    this.sessionTime--;
-                    strokeOffset = strokeOffset + strokeCountInSecond;
-                    progressBar[0].style.strokeDashoffset = strokeOffset;
-                    progressBarThumb[0].style.strokeDashoffset = strokeOffset;
+            let newTodos = [];
+            this.todos.forEach(function (item) {
+                if (!item.completed) {
+                    newTodos.push(item);
                 }
-            }, interval);
+            })
+            if (newTodos.length > 0) {
+                this.timerStart = true;
+                progressBar[0].style.opacity = "1";
+                progressBarThumb[0].style.opacity = "1";
+                middleCircle[0].style.fill = whiteColor;
+                middleCircleThumb[0].style.fill = whiteColor;
+                leftCircle[0].style.opacity = whiteColor;
+                rightCircle[0].style.opacity = whiteColor;
+
+                this.timeFunc = setInterval(() => {
+                    if (this.sessionTime === 0) {
+                        progressBar[0].style.opacity = "0";
+                        progressBarThumb[0].style.opacity = "0";
+                        middleCircle[0].style.fill = mainRedColor;
+                        middleCircleThumb[0].style.fill = mainRedColor;
+                        leftCircle[0].style.opacity = whiteColor;
+                        rightCircle[0].style.opacity = whiteColor;
+                        // clearInterval(counterInterval);
+                    } else {
+                        this.sessionTime--;
+                        strokeOffset = strokeOffset + strokeCountInSecond;
+                        progressBar[0].style.strokeDashoffset = strokeOffset;
+                        progressBarThumb[0].style.strokeDashoffset = strokeOffset;
+                    }
+                }, interval);
+            } else {
+                alert("Please add some tasks.");
+            }
         },
         stopTime() {
             this.timerStart = false;
@@ -177,6 +178,23 @@ let app = new Vue({
                 doneListBox.style.display = "none";
                 toggleDoneBtnIcon.textContent = "arrow_drop_down";
             }
+        },
+        completeCurrentTodo: function () {
+            this.todos[this.currentTodoIndex].isCurrentTodo = false;
+            this.todos[this.currentTodoIndex].completed = true;
+            let newTodos = [];
+            this.todos.forEach(function (item) {
+                if (!item.completed) {
+                    newTodos.push(item);
+                }
+            })
+
+            if (newTodos.length > 0 && this.currentTodoIndex <= newTodos.length) {
+                this.currentTodoIndex++;
+            } else {
+                this.currentTodoIndex = 0;
+            }
+
         }
     },
     computed: {
@@ -211,11 +229,37 @@ let app = new Vue({
             })
             return newTodos;
         },
-        setCurrentTodo() {
-            if (this.todos.length > 0) {
-                this.todos[this.currentTodo].isCurrentTodo = true;
-                return this.todos[this.currentTodo].title;
+        setCurrentTodo: function () {
+            if (!this.isRunTodo) {
+                let newTodos = [];
+                this.todos.forEach(function (item) {
+                    if (!item.completed) {
+                        newTodos.push(item);
+                    }
+                })
+                if (newTodos.length > 0) {
+                    this.todos.forEach(function (item) {
+                        if (!item.completed) {
+                            item.isCurrentTodo = false;
+                        }
+                    })
+                    this.todos[this.currentTodoIndex].isCurrentTodo = true;
+                    this.currentTitle = this.todos[this.currentTodoIndex].title;
+                } else {
+                    this.currentTitle = "";
+                }
+            } else {
+                this.todos.forEach(function (item) {
+                    if (!item.completed) {
+                        item.isCurrentTodo = false;
+                    }
+                })
+                this.todos[this.currentTodoIndex].isCurrentTodo = true;
+                this.currentTitle = this.todos[this.currentTodoIndex].title;
+                this.isRunTodo = false;
             }
+
+            return this.currentTitle;
         },
         clock() {
             if (this.sessionTime > 0) {
@@ -233,6 +277,7 @@ let app = new Vue({
                 let min = "00";
                 let sec = "02";
                 this.stopTime();
+                this.completeCurrentTodo();
                 return `${min}:${sec}`
             }
         },
