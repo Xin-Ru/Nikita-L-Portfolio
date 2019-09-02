@@ -74,11 +74,19 @@ let app = new Vue({
             this.todos[this.currentTodoIndex].isCurrentTodo = true;
         },
         deleteTodo: function (todo) {
+            let currentItemID = this.todos[this.currentTodoIndex].id;
+
             let vm = this;
             let newIndex = vm.todos.findIndex(function (item, key) {
                 return todo.id === item.id;
-            })
+            });
             this.todos.splice(newIndex, 1);
+
+            let newCurrentIndex = vm.todos.findIndex(function (item, key) {
+                return currentItemID === item.id;
+            });
+
+            this.currentTodoIndex = newCurrentIndex;
         },
         runTodo: function (todo) {
             let vm = this;
