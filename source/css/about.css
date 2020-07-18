@@ -729,3 +729,12 @@ footer {
   @media (max-width: 749px) {
     .chat__text {
       font-size: 1rem; } }
+
+/*Soul Page*/
+.soul__listBox {
+  color: #7F8DFD; }
+  .soul__listBox li {
+    list-style-type: square;
+    letter-spacing: 1px;
+    margin: 10px 0;
+    line-height: 24px; }
